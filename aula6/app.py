@@ -1,12 +1,13 @@
 
 from flask import Flask, request
+from json import dumps
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 @app.route('/add', methods=['GET','POST'])
 def add():
     if request.method == 'POST':
-        return 'Post detectado'
+        return dumps(request.form)
     else:
         return "Deu certo"
 
